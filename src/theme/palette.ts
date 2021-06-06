@@ -2,11 +2,12 @@ const palette = {
   primary: {
     main: '#682A0F',
     light: '#A03D13',
-    dark: '#6D3B09',
+    dark: '#582B39',
     contrastText: '#FFFFFF',
   },
   secondary: {
     main: '#F7DBBE',
+    light: "#FEF6EE"
   },
   error: {
     main: '#F16267',
@@ -19,7 +20,8 @@ const palette = {
     light: '#69BB62',
   },
   white: "#FFFFFF",
-  black: "#000000"
+  black: "#000000",
+  banner: "#FDECDA"
 };
 
 export default palette;

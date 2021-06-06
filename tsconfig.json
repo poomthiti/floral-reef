@@ -2,11 +2,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
+      "@components": [
         "src/components"
       ],
-      "@theme/*": [
+      "@theme": [
         "src/theme"
+      ],
+      "@images/*": [
+        "src/assets/images"
       ]
     },
     "target": "es5",
@@ -30,7 +33,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "./custom.d.ts",
   ],
   "exclude": [
     "node_modules"

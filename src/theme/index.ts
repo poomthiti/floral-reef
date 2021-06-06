@@ -1,7 +1,8 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 import palette from 'src/theme/palette';
-import { normalize } from 'path';
+export {palette}
+
 const options = {
   palette,
   typography: {
