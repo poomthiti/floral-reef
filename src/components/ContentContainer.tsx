@@ -4,13 +4,14 @@ export const ContentContainer = styled.div<{ bgColor?: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  height: fit-content;
   width: 100%;
+  padding: 24px 0;
   background-color: ${({ bgColor }) => bgColor || ''};
 `
 
 export const Content = styled.div`
-  max-width: 1280px;
+  max-width: 960px;
   display: flex;
   flex-direction: column;
   align-items: center;

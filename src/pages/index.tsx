@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Typography } from '@material-ui/core'
 import styled from '@emotion/styled'
-import { ContentContainer, Content } from '@components'
+import {
+  ContentContainer,
+  Content,
+  CustomTabs,
+  HomeContent
+} from '@components'
 import { palette } from '@theme'
 
 const Title = styled(Typography)`
@@ -15,12 +20,14 @@ const SubTitle = styled(Typography)`
 `
 
 export default function Home() {
+  const [tabIndex, setTabIndex] = useState<number>(0);
   return (
-    <ContentContainer bgColor={palette.secondary.light}>
-      <Content>
-        <Title children="Flowers" />
-        <SubTitle children="Designed by The Floral Reef" />
-      </Content>
-    </ContentContainer>
+    <>
+      <CustomTabs
+        tabIndex={tabIndex}
+        setTabIndex={setTabIndex}
+      />
+      <HomeContent />
+    </>
   )
 }

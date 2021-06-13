@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core/styles'
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react'
 import theme from 'src/theme'
-import { MainContainer, LogoBanner, CustomTabs } from '@components'
+import { MainContainer, LogoBanner } from '@components'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,7 +15,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <EmotionThemeProvider theme={theme}>
           <MainContainer>
             <LogoBanner />
-            <CustomTabs />
             <Component {...pageProps} />
           </MainContainer>
         </EmotionThemeProvider>

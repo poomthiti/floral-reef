@@ -9,7 +9,7 @@
         "src/theme"
       ],
       "@images/*": [
-        "src/assets/images"
+        "src/assets/images/*"
       ]
     },
     "target": "es5",

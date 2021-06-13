@@ -36,8 +36,12 @@ const TabLabel = styled(Typography)`
   text-transform: capitalize;
 `
 
-export const CustomTabs: React.FC = () => {
-  const [tabIndex, setTabIndex] = useState<number>(0);
+interface CustomTabsProps {
+  tabIndex: number
+  setTabIndex: React.Dispatch<React.SetStateAction<number>>,
+}
+
+export const CustomTabs: React.FC<CustomTabsProps> = ({ tabIndex, setTabIndex }) => {
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number): void => {
     setTabIndex(newValue)
   }
