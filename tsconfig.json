@@ -10,7 +10,13 @@
       ],
       "@images/*": [
         "src/assets/images/*"
-      ]
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@data": [
+        "src/data"
+      ],
     },
     "target": "es5",
     "lib": [
@@ -34,7 +40,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "./custom.d.ts",
+    "./custom.d.ts", "src/assets/images/logoAndBanner/index.js", "src/assets/images/catalog/index.js",
   ],
   "exclude": [
     "node_modules"

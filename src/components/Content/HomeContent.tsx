@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import { Typography } from '@material-ui/core'
 import styled from '@emotion/styled'
-import { ContentContainer, Content } from '@components'
+import { ContentContainer, Content, ImageSwiper } from '@components'
 import { palette } from '@theme'
 
+const SwiperContainer = styled.div`
+  width: 100%;
+  height: 74vh;
+`
 const Title = styled(Typography)`
   font-size: 32px;
   margin: 32px 0 4px;
@@ -13,7 +17,6 @@ const SubTitle = styled(Typography)`
   font-size: 18px;
   font-style: italic;
 `
-
 const SubContent = styled(Content)`
   padding: 32px;
   justify-content: center;
@@ -32,6 +35,9 @@ const ThaiSubTitle = styled(Typography)`
 export const HomeContent = () => {
   return (
     <>
+      <SwiperContainer>
+        <ImageSwiper />
+      </SwiperContainer>
       <ContentContainer bgColor={palette.banner}>
         <SubContent>
           <BrownSubTitle children="The FloralReef floral design store is an online flower shop based in Bangkok, Thailand." />

@@ -1,6 +1,6 @@
 import * as pics from '@images/catalog'
 
-export const FlowerImageList = {
+export const flowerImageList = {
   SKU1: [pics.SKU1PIC1,pics.SKU1PIC2,pics.SKU1PIC3,pics.SKU1PIC4,pics.SKU1PIC5,pics.SKU1PIC6],
   SKU2: [pics.SKU2PIC1,pics.SKU2PIC2,pics.SKU2PIC3,pics.SKU2PIC4,pics.SKU2PIC5,pics.SKU2PIC6],
   SKU3: [pics.SKU3PIC1,pics.SKU3PIC2,pics.SKU3PIC3,pics.SKU3PIC4,pics.SKU3PIC5,pics.SKU3PIC6],
