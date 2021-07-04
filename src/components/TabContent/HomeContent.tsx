@@ -1,17 +1,49 @@
 import React, { useState } from 'react'
 import { Typography } from '@material-ui/core'
 import styled from '@emotion/styled'
-import { ContentContainer, Content, ImageSwiper } from '@components'
+import {
+  ContentContainer,
+  Content,
+  ImageSwiper,
+  LineAccountButton
+} from '@components'
 import { palette } from '@theme'
 
 const SwiperContainer = styled.div`
   width: 100%;
   height: 74vh;
 `
-const Title = styled(Typography)`
+const SwiperInfoDiv = styled.div`
+  height: 74vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 0 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+`
+const SwiperInfoHeader = styled(Typography)`
+  font-size: 42px;
+  color: ${palette.primary.main};
+  text-align: center;
+`
+const SwiperInfoSubtitle = styled(Typography)`
+  font-size: 18px;
+  color: ${palette.secondary.light};
+  font-weight: bold;
+  text-align: center;
+`
+const InquireText = styled(Typography)`
+  color: white;
+  text-align: center;
+  margin-bottom: 18px;
+`
+const Title = styled(SwiperInfoHeader)`
   font-size: 32px;
   margin: 32px 0 4px;
-  color: ${palette.primary.main};
 `
 const SubTitle = styled(Typography)`
   font-size: 18px;
@@ -36,6 +68,16 @@ export const HomeContent = () => {
   return (
     <>
       <SwiperContainer>
+        <SwiperInfoDiv>
+          <div>
+            <SwiperInfoHeader children="The Floral Reef" />
+            <SwiperInfoSubtitle children="Online Floral Design Store - Bouquet - Decoration - Wedding" />
+          </div>
+          <div>
+            <InquireText>สอบถามหรือสั่งซื้อดอกไม้ได้ที่</InquireText>
+            <LineAccountButton theme="secondary" />
+          </div>
+        </SwiperInfoDiv>
         <ImageSwiper />
       </SwiperContainer>
       <ContentContainer bgColor={palette.banner}>

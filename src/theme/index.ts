@@ -20,13 +20,7 @@ const options = {
       xl: 1200
     }
   },
-  shadows: Array(25)
-    .fill('none')
-    .map((el, index) => (
-      (index === 8)
-        ? '0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)'
-        : el
-    )),
+  shadows: ['3.35px 3.72px 8px 1px rgba(0,0,0,0.45)']
 };
 
 export default createMuiTheme(options as any);

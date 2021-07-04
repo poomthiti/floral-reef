@@ -25,7 +25,6 @@ const SlideImage = styled.img<{ isActive?: boolean }>`
     z-index: -1;
   `}
 `
-
 const swiperStyle: CSS.Properties = {
   display: 'flex',
   justifyContent: 'center',
