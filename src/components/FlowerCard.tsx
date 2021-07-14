@@ -6,31 +6,42 @@ import { Typography } from '@material-ui/core'
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  position: relative;
+`
+const ImageDiv = styled.div`
+  width: 220px;
+  height: 220px;
 `
 
 const Image = styled.img`
-  width: 220px;
-  height: 220px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 `
 
 const StatusBox = styled.div`
   padding: 8px 10px;
   background-color: ${palette.primary.light};
   z-index: 9;
+  position: absolute;
+  top: 0;
 `
 
 const StatusText = styled(Typography)`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: ${palette.white};
 `
 const ItemName = styled(Typography)`
-  margin: 16px 0;
+  margin: 12px 0 4px;
+  font-size: 14px;
 `
 const PriceText = styled(Typography)`
   color: #404040;
-  font-size: 18px;
+  font-size: 16px;
 `
 
 interface CardProps {
@@ -48,24 +59,24 @@ export const FlowerCard: React.FC<CardProps> = ({
   status,
   price
 }) => {
-  const [displayImage, setDisplayImage] = React.useState<string>(staticImage);
   const defaultPrice = Number(price) || 0
   return (
     <CardContainer>
-      <div>
+      <ImageDiv>
         <Image
-          src={displayImage}
-          onMouseOver={() => setDisplayImage(hoverImage)}
-          onMouseOut={() => setDisplayImage(staticImage)}
+          src={staticImage}
+          onMouseOver={(e) => e.currentTarget.src = hoverImage}
+          onMouseOut={(e) => e.currentTarget.src = staticImage}
+          alt={itemName}
         />
         {status && (
           <StatusBox>
             <StatusText children={status} />
           </StatusBox>
         )}
-      </div>
+      </ImageDiv>
       <ItemName children={itemName} />
-      <PriceText children={`฿${Number(defaultPrice.toFixed(2)).toLocaleString('en-US')}`} />
+      <PriceText children={`฿${(defaultPrice.toLocaleString(undefined, { minimumFractionDigits: 2 }))}`} />
     </CardContainer>
   )
 }

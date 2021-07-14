@@ -51,7 +51,7 @@ export const ImageSwiper: React.FC = () => {
     >
       {
         Object.values(SlideList).map((slide, idx) => (
-          <SwiperSlide style={swiperStyle}>
+          <SwiperSlide style={swiperStyle} key={slide}>
             <SlideImage src={slide} isActive={idx === activeIndex} />
           </SwiperSlide>
         ))

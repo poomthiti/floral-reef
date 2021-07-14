@@ -16,20 +16,20 @@ const ButtonContainer = styled(Button) <{ buttonTheme: PropTypes.Color, theme?: 
   ${({ buttonTheme }) => buttonTheme === 'primary'
     ? `
     background-color: ${palette.primary.main};
-    color ${palette.white};
+    color: ${palette.white};
     :hover {
-      background-color: ${palette.primary.dark};
+      background-color: #53210c;
     }
-  `
+`
     : `
-    background-color: ${palette.banner};
-    color: ${palette.primary.main};
+background - color: ${palette.banner};
+color: ${palette.primary.main};
 
-    :hover {
-      background-color: ${palette.primary.main};
-      color: ${palette.white};
-    }
-    `}
+    : hover {
+  background - color: ${palette.primary.main};
+  color: ${palette.white};
+}
+`}
 `;
 
 const ButtonText = styled(Typography) <{ buttonTheme: PropTypes.Color }>`
@@ -45,13 +45,13 @@ export const LineAccountButton: React.FC<ButtonProps> = ({
   theme = "primary"
 }) => {
   return (
-    <ButtonContainer
-      variant="contained"
-      buttonTheme={theme}
-    >
-      <a href="http://lin.ee/XPhIN5e6" target="_blank">
+    <a href="http://lin.ee/XPhIN5e6" target="_blank">
+      <ButtonContainer
+        variant="contained"
+        buttonTheme={theme}
+      >
         <ButtonText buttonTheme={theme}>Line Official Account</ButtonText>
-      </a>
-    </ButtonContainer >
+      </ButtonContainer >
+    </a>
   )
 }

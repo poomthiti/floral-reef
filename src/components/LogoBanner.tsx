@@ -2,10 +2,8 @@ import React, { CSSProperties } from 'react';
 import styled from '@emotion/styled'
 import { Typography } from '@material-ui/core'
 import { palette } from '@theme'
-import FacebookIcon from '@material-ui/icons/Facebook';
-import InstagramIcon from '@material-ui/icons/Instagram';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import LineLogo from 'src/assets/images/line-logo.png'
+import { SocialIcons } from '.'
 
 const logoImg = require('../assets/images/logoAndBanner/TheFloralReef_LOGO_Normal_1.jpg')
 
@@ -13,7 +11,7 @@ const BannerContainer = styled.div`
   display: flex;
   top: 0;
   width: 100%;
-  height: 22%;
+  height: 22vh;
   justify-content: flex-end;
   align-items: flex-end;
   padding: 1rem 3rem;
@@ -55,15 +53,7 @@ export const LogoBanner = () => {
           }} />
           <Typography children=": thefloralreef.bkk@gmail.com" />
         </EmailSection>
-        <a href="https://www.instagram.com/thefloralreef.bkk/" target="_blank">
-          <InstagramIcon style={iconStyle} />
-        </a>
-        <a href="https://www.facebook.com/thefloralreeff" target="_blank">
-          <FacebookIcon style={iconStyle} />
-        </a>
-        <a href="http://lin.ee/XPhIN5e6" target="_blank">
-          <img src={LineLogo} style={iconStyle} />
-        </a>
+        <SocialIcons />
       </SocialSection>
     </BannerContainer>
   )
