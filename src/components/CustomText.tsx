@@ -7,3 +7,7 @@ export const PrimaryTitle = styled(Typography)`
   color: ${palette.primary.main};
   text-align: center;
 `
+
+export const PrimarySubtitle = styled(PrimaryTitle)`
+  font-size: 16px;
+`
