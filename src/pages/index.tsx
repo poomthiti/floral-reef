@@ -5,7 +5,8 @@ import {
   ContentContainer,
   Content,
   CustomTabs,
-  HomeContent
+  HomeContent,
+  AboutUsContent
 } from '@components'
 import { palette } from '@theme'
 
@@ -19,6 +20,21 @@ const SubTitle = styled(Typography)`
   font-style: italic;
 `
 
+const TabContent = (tabIndex: number) => {
+  switch (tabIndex) {
+    case 0:
+      return <HomeContent />
+    case 1:
+      return <></>
+    case 2:
+      return <></>
+    case 3:
+      return <AboutUsContent />
+    case 4:
+      return <></>
+  }
+}
+
 export default function Home() {
   const [tabIndex, setTabIndex] = useState<number>(0);
   return (
@@ -27,7 +43,7 @@ export default function Home() {
         tabIndex={tabIndex}
         setTabIndex={setTabIndex}
       />
-      <HomeContent />
+      {TabContent(tabIndex)}
     </>
   )
 }
