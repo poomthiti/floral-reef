@@ -33,13 +33,8 @@ const EmailSection = styled.a`
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-right: 1rem;
 `
-
-const iconStyle: CSSProperties = {
-  width: '30px',
-  height: '30px',
-  marginLeft: '1rem'
-}
 
 export const LogoBanner = () => {
   return (

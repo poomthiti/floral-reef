@@ -13,7 +13,7 @@ export const SocialIcons = () => {
   return (
     <>
       <a href="https://www.instagram.com/thefloralreef.bkk/" target="_blank">
-        <InstagramIcon style={iconStyle} />
+        <InstagramIcon style={{ ...iconStyle, marginLeft: 0 }} />
       </a>
       <a href="https://www.facebook.com/thefloralreeff" target="_blank">
         <FacebookIcon style={iconStyle} />
