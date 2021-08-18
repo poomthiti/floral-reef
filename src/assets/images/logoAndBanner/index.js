@@ -7,3 +7,4 @@ export * as Slide6 from './Collections_200521_0006.jpg'
 export * as Slide7 from './Collections_210125_0.jpg'
 export * as Slide8 from './Collections_210125_3.jpg'
 export * as Slide10 from './S__6471712.jpg'
+
