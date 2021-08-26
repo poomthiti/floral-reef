@@ -13,4 +13,4 @@ export interface Product {
   price: string
 }
 
-export type Category = Collection.SIGNATURE_COLLECTIONS | Collection.BOUQUETS | Collection.VASES | Collection.BOXES | Collection.DRIED_FLOWERS
+export type Category = Collection.SIGNATURE_COLLECTIONS | Collection.BOUQUETS | Collection.VASES | Collection.BOXES | Collection.DRIED_FLOWERS | ''

@@ -6,7 +6,8 @@ import {
   Content,
   CustomTabs,
   HomeContent,
-  AboutUsContent
+  AboutUsContent,
+  NewCollectionContent
 } from '@components'
 import { palette } from '@theme'
 
@@ -25,7 +26,7 @@ const TabContent = (tabIndex: number) => {
     case 0:
       return <HomeContent />
     case 1:
-      return <></>
+      return <NewCollectionContent />
     case 2:
       return <></>
     case 3:

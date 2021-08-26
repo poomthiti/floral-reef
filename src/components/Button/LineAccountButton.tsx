@@ -5,8 +5,8 @@ import { palette } from '@theme';
 
 const ButtonContainer = styled(Button) <{ buttonTheme: PropTypes.Color, theme?: Theme }>`
   border-radius: 30px;
-  padding: 16px;
-  width: 260px;
+  padding: 14px;
+  width: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,26 +15,28 @@ const ButtonContainer = styled(Button) <{ buttonTheme: PropTypes.Color, theme?: 
 
   ${({ buttonTheme }) => buttonTheme === 'primary'
     ? `
-    background-color: ${palette.primary.main};
-    color: ${palette.white};
-    :hover {
-      background-color: #53210c;
-    }
-`
+      background-color: ${palette.primary.main};
+      color: ${palette.white};
+      :hover {
+        background-color: #53210c;
+      }
+      `
     : `
-background - color: ${palette.banner};
-color: ${palette.primary.main};
-
-    : hover {
-  background - color: ${palette.primary.main};
-  color: ${palette.white};
-}
-`}
+      background-color: ${palette.banner};
+      color: ${palette.primary.main};
+      :hover {
+        background-color: ${palette.primary.main};
+        color: ${palette.white};
+      }
+      `
+    }
 `;
 
 const ButtonText = styled(Typography) <{ buttonTheme: PropTypes.Color }>`
   font-weight: 600;
   color: inherit;
+  text-transform: capitalize;
+  font-size: 18px;
 `
 
 interface ButtonProps {

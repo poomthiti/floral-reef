@@ -23,7 +23,8 @@ const categoryMap = {
   'Bouquets': 'Flower Bouquets',
   'Vases': 'Flower Vases',
   'Boxes': 'Flower Boxes',
-  'Dried Flowers': 'Dried Flowers'
+  'Dried Flowers': 'Dried Flowers',
+  '': '',
 }
 
 interface Props {

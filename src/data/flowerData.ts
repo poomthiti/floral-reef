@@ -1,6 +1,7 @@
-import {flowerImageList} from './imageData'
-import {Collection, Size, Color, Status} from '@lib/enum'
-import {Product} from '@lib/types';
+import { flowerImageList } from './imageData'
+import { Collection, Size, Color, Status } from '@lib/enum'
+import { Product } from '@lib/types';
+import { Accordion } from '@material-ui/core';
 
 interface Data {
   category: Collection
@@ -526,3 +527,8 @@ export const flowerData: Data[] = [
     ]
   },
 ]
+
+export const allProductData = flowerData.reduce((acc: Product[], curr) => {
+  const tmp = [...acc, ...curr.products]
+  return tmp;
+}, [])

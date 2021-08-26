@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
 import palette from 'src/theme/palette';
 export {palette}
@@ -23,4 +23,4 @@ const options = {
   shadows: ['3.35px 3.72px 8px 1px rgba(0,0,0,0.45)']
 };
 
-export default createMuiTheme(options as any);
+export default createTheme(options as any);
