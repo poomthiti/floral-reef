@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
-import theme, { palette } from '@theme'
+import { palette } from '@theme'
 
 const TabsContainer = styled.div`
   display: flex;
@@ -36,20 +37,40 @@ const TabLabel = styled(Typography)`
   text-transform: capitalize;
 `
 
-interface CustomTabsProps {
-  tabIndex: number
-  setTabIndex: React.Dispatch<React.SetStateAction<number>>,
+const urlPathMap: {[key: number]: string} = {
+  0: '/',
+  1: '/new-collection',
+  2: '/flowers',
+  3: '/about-us',
+  4: '/contact'
 }
 
-export const CustomTabs: React.FC<CustomTabsProps> = ({ tabIndex, setTabIndex }) => {
+export const CustomTabs: React.FC = () => {
+  const router = useRouter();
+  const getTabIndex = () => {
+    const path = router.pathname
+    if (path === '/') {
+      return 0
+    } else if (path.startsWith('/new-collection')) {
+      return 1
+    } else if (path.startsWith('/flowers')) {
+      return 2
+    } else if (path.startsWith('/about-us')) {
+      return 3
+    } else if (path.startsWith('/contact')) {
+      return 4
+    }
+  }
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number): void => {
-    setTabIndex(newValue)
+    router.push({
+      pathname: urlPathMap[newValue]
+    })
   }
 
   return (
     <TabsContainer>
       <Tabs
-        value={tabIndex}
+        value={getTabIndex()}
         onChange={handleChange}
         aria-label="tabs"
         TabIndicatorProps={{

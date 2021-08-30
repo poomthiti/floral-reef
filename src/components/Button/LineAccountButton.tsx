@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { Button, PropTypes, Typography, Theme } from '@material-ui/core'
 import { palette } from '@theme';
 
-const ButtonContainer = styled(Button) <{ buttonTheme: PropTypes.Color, theme?: Theme }>`
+const ButtonContainer = styled(Button) <{ buttontheme: PropTypes.Color, theme?: Theme }>`
   border-radius: 30px;
   padding: 14px;
   width: 220px;
@@ -13,7 +13,7 @@ const ButtonContainer = styled(Button) <{ buttonTheme: PropTypes.Color, theme?: 
   box-shadow: ${({ theme }) => theme.shadows[0]};
   cursor: pointer;
 
-  ${({ buttonTheme }) => buttonTheme === 'primary'
+  ${({ buttontheme }) => buttontheme === 'primary'
     ? `
       background-color: ${palette.primary.main};
       color: ${palette.white};
@@ -32,7 +32,7 @@ const ButtonContainer = styled(Button) <{ buttonTheme: PropTypes.Color, theme?: 
     }
 `;
 
-const ButtonText = styled(Typography) <{ buttonTheme: PropTypes.Color }>`
+const ButtonText = styled(Typography) <{ buttontheme: PropTypes.Color }>`
   font-weight: 600;
   color: inherit;
   text-transform: capitalize;
@@ -50,9 +50,9 @@ export const LineAccountButton: React.FC<ButtonProps> = ({
     <a href="http://lin.ee/XPhIN5e6" target="_blank">
       <ButtonContainer
         variant="contained"
-        buttonTheme={theme}
+        buttontheme={theme}
       >
-        <ButtonText buttonTheme={theme}>Line Official Account</ButtonText>
+        <ButtonText buttontheme={theme}>Line Official Account</ButtonText>
       </ButtonContainer >
     </a>
   )
