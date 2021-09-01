@@ -4,6 +4,7 @@ import {
   ContentContainer,
   LineAccountButton,
   FlowerCollection,
+  Content,
 } from '@components'
 import { palette } from '@theme'
 import { allProductData } from '@data'
@@ -55,11 +56,13 @@ const NewCollection = () => {
         </InquireContainer>
       </ContentContainer>
       <MoreBottomPadding bgColor={palette.white}>
-        <FlowerCollection
-          category=''
-          products={allProductData}
-          pageSize={8}
-        />
+        <Content>
+          <FlowerCollection
+            category=''
+            products={allProductData}
+            pageSize={8}
+          />
+        </Content>
       </MoreBottomPadding>
     </>
   )

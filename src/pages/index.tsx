@@ -117,7 +117,7 @@ const VerticalGroup = styled.div`
   margin: 30px 0 24px;
 `
 const SocialSection = styled.div`
-  margin-top: 16px;
+  margin-top: 24px;
 `
 
 const Home = () => {
@@ -149,32 +149,40 @@ const Home = () => {
         </Content>
       </ContentContainer>
       <ContentContainer bgColor={palette.secondary.light}>
-        <FlowerCollection
-          category={flowerData[0].category}
-          products={flowerData[0].products}
-          pageSize={8}
-        />
+        <Content>
+          <FlowerCollection
+            category={flowerData[0].category}
+            products={flowerData[0].products}
+            pageSize={8}
+          />
+        </Content>
       </ContentContainer>
       <LessPaddingContent bgColor={palette.white}>
-        <FlowerCollection
-          category={flowerData[1].category}
-          products={flowerData[1].products}
-          pageSize={4}
-        />
+        <Content>
+          <FlowerCollection
+            category={flowerData[1].category}
+            products={flowerData[1].products}
+            pageSize={4}
+          />
+        </Content>
       </LessPaddingContent>
       <LessPaddingContent bgColor={palette.white}>
-        <FlowerCollection
-          category={flowerData[2].category}
-          products={flowerData[2].products}
-          pageSize={4}
-        />
+        <Content>
+          <FlowerCollection
+            category={flowerData[2].category}
+            products={flowerData[2].products}
+            pageSize={4}
+          />
+        </Content>
       </LessPaddingContent>
       <ContentContainer bgColor={palette.white}>
-        <FlowerCollection
-          category={flowerData[3].category}
-          products={flowerData[3].products}
-          pageSize={4}
-        />
+        <Content>
+          <FlowerCollection
+            category={flowerData[3].category}
+            products={flowerData[3].products}
+            pageSize={4}
+          />
+        </Content>
       </ContentContainer>
       <AboutUsContainer>
         <HalfContent>

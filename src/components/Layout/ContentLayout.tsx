@@ -11,7 +11,7 @@ export const ContentContainer = styled.div<{ bgColor?: string }>`
 `
 
 export const Content = styled.div`
-  width: 960px;
+  width: 980px;
   display: flex;
   flex-direction: column;
   align-items: center;

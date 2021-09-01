@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { Typography, Grid } from '@material-ui/core';
 import { palette } from '@theme';
-import { Content, FlowerCard } from '@components';
-import { Collection } from '@lib/enum'
+import { FlowerCard } from '@components';
 import { Product, Category } from '@lib/types'
 import Pagination from '@material-ui/lab/Pagination';
+import { GridSize } from '@material-ui/core';
 
 const CollectionTitle = styled(Typography)`
   color: ${palette.primary.light};
@@ -16,6 +16,8 @@ const CollectionTitle = styled(Typography)`
 `
 const CustomPagination = styled(Pagination)`
   margin-top: 70px;
+  display: flex;
+  justify-content: center;
 `
 
 const categoryMap = {
@@ -31,12 +33,14 @@ interface Props {
   category: Category;
   products: Product[] | [];
   pageSize: number
+  gridSize?: GridSize
 }
 
 export const FlowerCollection: React.FC<Props> = ({
   category,
   products,
-  pageSize
+  pageSize,
+  gridSize = 3
 }) => {
   const [page, setPage] = useState<number>(1);
   const [productPaging, setProductPaging] = useState<Product[] | []>(products.slice(0, pageSize));
@@ -48,7 +52,7 @@ export const FlowerCollection: React.FC<Props> = ({
   const pageNumber = Math.ceil(products.length / pageSize)
 
   return (
-    <Content>
+    <>
       <CollectionTitle children={categoryMap[category]} />
       <Grid container spacing={3}>
         {productPaging?.map((item) => {
@@ -60,7 +64,7 @@ export const FlowerCollection: React.FC<Props> = ({
             price
           } = item
           return (
-            <Grid item md={3} key={itemName}>
+            <Grid item md={gridSize} key={itemName}>
               <FlowerCard
                 staticImage={staticImage}
                 hoverImage={hoverImage}
@@ -79,6 +83,6 @@ export const FlowerCollection: React.FC<Props> = ({
         onChange={handleChange}
         page={page}
       />
-    </Content>
+    </>
   )
 }
