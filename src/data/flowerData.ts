@@ -1,7 +1,6 @@
 import { flowerImageList } from './imageData'
 import { Collection, Size, Color, Status } from '@lib/enum'
 import { Product } from '@lib/types';
-import { Accordion } from '@material-ui/core';
 
 interface Data {
   category: Collection
@@ -13,6 +12,7 @@ export const flowerData: Data[] = [
     category: Collection.SIGNATURE_COLLECTIONS,
     products: [
       {
+        id: '1',
         staticImage: flowerImageList.SKU1[0],
         hoverImage: flowerImageList.SKU1[1],
         imageList: flowerImageList.SKU1,
@@ -25,6 +25,7 @@ export const flowerData: Data[] = [
         price: '2200',
       },
       {
+        id: '2',
         staticImage: flowerImageList.SKU2[2],
         hoverImage: flowerImageList.SKU2[0],
         imageList: flowerImageList.SKU2,
@@ -37,6 +38,7 @@ export const flowerData: Data[] = [
         price: '2200',
       },
       {
+        id: '3',
         staticImage: flowerImageList.SKU3[0],
         hoverImage: flowerImageList.SKU3[1],
         imageList: flowerImageList.SKU3,
@@ -49,6 +51,7 @@ export const flowerData: Data[] = [
         price: '2200',
       },
       {
+        id: '4',
         staticImage: flowerImageList.SKU4[0],
         hoverImage: flowerImageList.SKU4[1],
         imageList: flowerImageList.SKU4,
@@ -61,6 +64,7 @@ export const flowerData: Data[] = [
         price: '1350',
       },
       {
+        id: '5',
         staticImage: flowerImageList.SKU5[0],
         hoverImage: flowerImageList.SKU5[1],
         imageList: flowerImageList.SKU5,
@@ -73,6 +77,7 @@ export const flowerData: Data[] = [
         price: '1350',
       },
       {
+        id: '6',
         staticImage: flowerImageList.SKU6[0],
         hoverImage: flowerImageList.SKU6[1],
         imageList: flowerImageList.SKU6,
@@ -85,6 +90,7 @@ export const flowerData: Data[] = [
         price: '1350',
       },
       {
+        id: '7',
         staticImage: flowerImageList.SKU7[0],
         hoverImage: flowerImageList.SKU7[1],
         imageList: flowerImageList.SKU7,
@@ -97,6 +103,7 @@ export const flowerData: Data[] = [
         price: '700',
       },
       {
+        id: '8',
         staticImage: flowerImageList.SKU8[0],
         hoverImage: flowerImageList.SKU8[1],
         imageList: flowerImageList.SKU8,
@@ -109,6 +116,7 @@ export const flowerData: Data[] = [
         price: '700',
       },
       {
+        id: '9',
         staticImage: flowerImageList.SKU9[0],
         hoverImage: flowerImageList.SKU9[1],
         imageList: flowerImageList.SKU9,
@@ -126,6 +134,7 @@ export const flowerData: Data[] = [
     category: Collection.BOUQUETS,
     products: [
       {
+        id: '10',
         staticImage: flowerImageList.SKU10[0],
         hoverImage: flowerImageList.SKU10[1],
         imageList: flowerImageList.SKU10,
@@ -138,6 +147,7 @@ export const flowerData: Data[] = [
         price: '3000',
       },
       {
+        id: '11',
         staticImage: flowerImageList.SKU11[0],
         hoverImage: flowerImageList.SKU11[1],
         imageList: flowerImageList.SKU11,
@@ -150,6 +160,7 @@ export const flowerData: Data[] = [
         price: '2800',
       },
       {
+        id: '12',
         staticImage: flowerImageList.SKU12[0],
         hoverImage: flowerImageList.SKU12[1],
         imageList: flowerImageList.SKU12,
@@ -162,6 +173,7 @@ export const flowerData: Data[] = [
         price: '3000',
       },
       {
+        id: '13',
         staticImage: flowerImageList.SKU13[0],
         hoverImage: flowerImageList.SKU13[1],
         imageList: flowerImageList.SKU13,
@@ -174,6 +186,7 @@ export const flowerData: Data[] = [
         price: '2200',
       },
       {
+        id: '14',
         staticImage: flowerImageList.SKU14[0],
         hoverImage: flowerImageList.SKU14[1],
         imageList: flowerImageList.SKU14,
@@ -186,6 +199,7 @@ export const flowerData: Data[] = [
         price: '1350',
       },
       {
+        id: '15',
         staticImage: flowerImageList.SKU15[0],
         hoverImage: flowerImageList.SKU15[1],
         imageList: flowerImageList.SKU15,
@@ -198,6 +212,7 @@ export const flowerData: Data[] = [
         price: '2750',
       },
       {
+        id: '16',
         staticImage: flowerImageList.SKU16[0],
         hoverImage: flowerImageList.SKU16[1],
         imageList: flowerImageList.SKU16,
@@ -210,6 +225,7 @@ export const flowerData: Data[] = [
         price: '2200',
       },
       {
+        id: '17',
         staticImage: flowerImageList.SKU17[0],
         hoverImage: flowerImageList.SKU17[1],
         imageList: flowerImageList.SKU17,
@@ -222,6 +238,7 @@ export const flowerData: Data[] = [
         price: '2200',
       },
       {
+        id: '18',
         staticImage: flowerImageList.SKU18[0],
         hoverImage: flowerImageList.SKU18[1],
         imageList: flowerImageList.SKU18,
@@ -234,6 +251,7 @@ export const flowerData: Data[] = [
         price: '1450',
       },
       {
+        id: '19',
         staticImage: flowerImageList.SKU19[0],
         hoverImage: flowerImageList.SKU19[1],
         imageList: flowerImageList.SKU19,
@@ -246,6 +264,7 @@ export const flowerData: Data[] = [
         price: '2250',
       },
       {
+        id: '20',
         staticImage: flowerImageList.SKU20[3],
         hoverImage: flowerImageList.SKU20[0],
         imageList: flowerImageList.SKU20,
@@ -258,6 +277,7 @@ export const flowerData: Data[] = [
         price: '2950',
       },
       {
+        id: '21',
         staticImage: flowerImageList.SKU21[2],
         hoverImage: flowerImageList.SKU21[4],
         imageList: flowerImageList.SKU21,
@@ -270,6 +290,7 @@ export const flowerData: Data[] = [
         price: '2200',
       },
       {
+        id: '22',
         staticImage: flowerImageList.SKU22[4],
         hoverImage: flowerImageList.SKU22[0],
         imageList: flowerImageList.SKU22,
@@ -282,6 +303,7 @@ export const flowerData: Data[] = [
         price: '2200',
       },
       {
+        id: '23',
         staticImage: flowerImageList.SKU37[0],
         hoverImage: flowerImageList.SKU37[1],
         imageList: flowerImageList.SKU37,
@@ -294,6 +316,7 @@ export const flowerData: Data[] = [
         price: '???',
       },
       {
+        id: '24',
         staticImage: flowerImageList.SKU38[0],
         hoverImage: flowerImageList.SKU38[1],
         imageList: flowerImageList.SKU38,
@@ -306,6 +329,7 @@ export const flowerData: Data[] = [
         price: '???',
       },
       {
+        id: '25',
         staticImage: flowerImageList.SKU39[0],
         hoverImage: flowerImageList.SKU39[1],
         imageList: flowerImageList.SKU39,
@@ -318,6 +342,7 @@ export const flowerData: Data[] = [
         price: '???',
       },
       {
+        id: '26',
         staticImage: flowerImageList.SKU40[0],
         hoverImage: flowerImageList.SKU40[1],
         imageList: flowerImageList.SKU40,
@@ -335,6 +360,7 @@ export const flowerData: Data[] = [
     category: Collection.VASES,
     products: [
       {
+        id: '27',
         staticImage: flowerImageList.SKU31[0],
         hoverImage: flowerImageList.SKU31[1],
         imageList: flowerImageList.SKU31,
@@ -347,6 +373,7 @@ export const flowerData: Data[] = [
         price: '4200',
       },
       {
+        id: '28',
         staticImage: flowerImageList.SKU32[5],
         hoverImage: flowerImageList.SKU32[3],
         imageList: flowerImageList.SKU32,
@@ -359,6 +386,7 @@ export const flowerData: Data[] = [
         price: '3500',
       },
       {
+        id: '29',
         staticImage: flowerImageList.SKU33[0],
         hoverImage: flowerImageList.SKU33[1],
         imageList: flowerImageList.SKU33,
@@ -371,6 +399,7 @@ export const flowerData: Data[] = [
         price: '2500',
       },
       {
+        id: '30',
         staticImage: flowerImageList.SKU34[0],
         hoverImage: flowerImageList.SKU34[3],
         imageList: flowerImageList.SKU34,
@@ -383,6 +412,7 @@ export const flowerData: Data[] = [
         price: '3000',
       },
       {
+        id: '31',
         staticImage: flowerImageList.SKU35[3],
         hoverImage: flowerImageList.SKU35[2],
         imageList: flowerImageList.SKU35,
@@ -395,6 +425,7 @@ export const flowerData: Data[] = [
         price: '3800',
       },
       {
+        id: '32',
         staticImage: flowerImageList.SKU36[1],
         hoverImage: flowerImageList.SKU36[0],
         imageList: flowerImageList.SKU36,
@@ -407,6 +438,7 @@ export const flowerData: Data[] = [
         price: '1250',
       },
       {
+        id: '33',
         staticImage: flowerImageList.SKU41[0],
         hoverImage: flowerImageList.SKU41[0],
         imageList: flowerImageList.SKU41,
@@ -424,6 +456,7 @@ export const flowerData: Data[] = [
     category: Collection.BOXES,
     products: [
       {
+        id: '34',
         staticImage: flowerImageList.SKU23[0],
         hoverImage: flowerImageList.SKU23[1],
         imageList: flowerImageList.SKU23,
@@ -436,6 +469,7 @@ export const flowerData: Data[] = [
         price: '1900',
       },
       {
+        id: '35',
         staticImage: flowerImageList.SKU24[0],
         hoverImage: flowerImageList.SKU24[2],
         imageList: flowerImageList.SKU24,
@@ -448,6 +482,7 @@ export const flowerData: Data[] = [
         price: '2200',
       },
       {
+        id: '36',
         staticImage: flowerImageList.SKU25[0],
         hoverImage: flowerImageList.SKU25[7],
         imageList: flowerImageList.SKU25,
@@ -460,6 +495,7 @@ export const flowerData: Data[] = [
         price: '1900',
       },
       {
+        id: '37',
         staticImage: flowerImageList.SKU26[0],
         hoverImage: flowerImageList.SKU26[1],
         imageList: flowerImageList.SKU26,
@@ -477,6 +513,7 @@ export const flowerData: Data[] = [
     category: Collection.DRIED_FLOWERS,
     products: [
       {
+        id: '38',
         staticImage: flowerImageList.SKU27[0],
         hoverImage: flowerImageList.SKU27[1],
         imageList: flowerImageList.SKU27,
@@ -489,6 +526,7 @@ export const flowerData: Data[] = [
         price: '900',
       },
       {
+        id: '39',
         staticImage: flowerImageList.SKU28[0],
         hoverImage: flowerImageList.SKU28[1],
         imageList: flowerImageList.SKU28,
@@ -501,6 +539,7 @@ export const flowerData: Data[] = [
         price: '800',
       },
       {
+        id: '40',
         staticImage: flowerImageList.SKU29[0],
         hoverImage: flowerImageList.SKU29[1],
         imageList: flowerImageList.SKU29,
@@ -513,6 +552,7 @@ export const flowerData: Data[] = [
         price: '2700',
       },
       {
+        id: '41',
         staticImage: flowerImageList.SKU30[2],
         hoverImage: flowerImageList.SKU30[0],
         imageList: flowerImageList.SKU30,

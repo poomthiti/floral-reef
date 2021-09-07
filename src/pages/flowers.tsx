@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import styled from '@emotion/styled'
 import {
   ContentContainer,
@@ -8,11 +8,14 @@ import {
 } from '@components'
 import { withStyles } from '@material-ui/core/styles';
 import { palette } from '@theme'
-import { allProductData } from '@data'
+import { allProductData, flowerData } from '@data'
 import { PrimaryTitle } from '../components/CustomText'
 import { Grid, Collapse, Slider } from '@material-ui/core'
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
+import { Collection } from '@lib/enum'
+import { useRouter } from 'next/router';
+import { Product } from '@lib/types';
 
 const TextDiv = styled.div`
   max-width: 480px;
@@ -43,10 +46,18 @@ const Title = styled(PrimaryTitle)`
 const MoreBottomPadding = styled(ContentContainer)`
   padding-bottom: 64px;
 `
-
 const MenuContainer = styled.div`
   display: flex;
   flex-direction: column;
+`
+const BorderLessMenu = styled.div`
+  padding: 22px 0;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  :hover {
+    opacity: 0.6;
+  }
 `
 const MenuDiv = styled.div`
   padding: 22px 0;
@@ -62,11 +73,12 @@ const CollapseTitleDiv = styled.div`
   align-items: center;
   cursor: pointer;
 `
-const CollectionFilterList = styled.div`
+const CollectionFilterItem = styled.div<{ selected: boolean }>`
   font-size: 14px;
+  font-weight: ${({ selected }) => selected ? 600 : 400};
   line-height: 1.8;
   cursor: pointer;
-  opacity: 0.7;
+  opacity: ${({ selected }) => selected ? 1 : 0.75};
   :hover {
     opacity: 0.4;
   }
@@ -84,13 +96,13 @@ const SliderContainer = styled.div`
   padding: 0 8px 0 10px;
 `
 
-const PrettoSlider = withStyles({
+const PriceSlider = withStyles({
   thumb: {
     height: 18,
     width: 18,
     backgroundColor: '#fff',
     border: '2px solid currentColor',
-    marginTop: -7,
+    marginTop: -8,
     marginLeft: -10,
     '&:focus, &:hover, &$active': {
       boxShadow: 'inherit',
@@ -110,7 +122,35 @@ const PrettoSlider = withStyles({
   },
 })(Slider);
 
+const collectionList = [
+  {
+    name: 'All',
+    navigateQuery: Collection.ALL,
+  },
+  {
+    name: 'The Floral Reef Signature',
+    navigateQuery: Collection.SIGNATURE_COLLECTIONS,
+  },
+  {
+    name: 'Bouquets',
+    navigateQuery: Collection.BOUQUETS,
+  },
+  {
+    name: 'Vases',
+    navigateQuery: Collection.VASES,
+  },
+  {
+    name: 'Boxes',
+    navigateQuery: Collection.BOXES,
+  },
+  {
+    name: 'Dried Flowers',
+    navigateQuery: Collection.DRIED_FLOWERS,
+  },
+]
+
 const Flowers = () => {
+  const router = useRouter();
   const [collapse, setCollapse] = useState<{ collection: boolean, price: boolean }>({
     collection: true,
     price: true
@@ -119,7 +159,65 @@ const Flowers = () => {
 
   const handleRangeChange = (_: any, newValue: any) => {
     setPriceRange(newValue);
+    router.push(
+      {
+        pathname: '/flowers',
+        query: {
+          ...router.query,
+          price: `${newValue[0]}-${newValue[1]}`
+        }
+      },
+      undefined,
+      { scroll: false, shallow: true }
+    )
   };
+
+  const collectionFilterList = collectionList.map((item) => {
+    const navigateFunction = () => router.push(
+      {
+        pathname: '/flowers',
+        query: {
+          ...router.query,
+          collection: item.navigateQuery
+        }
+      },
+      undefined,
+      { scroll: false, shallow: true }
+    )
+    const getSelected = () => {
+      if (!router.query?.collection && item.navigateQuery === Collection.ALL) {
+        return true
+      }
+      return item.navigateQuery === router.query?.collection
+    }
+    return (
+      <CollectionFilterItem onClick={navigateFunction} selected={getSelected()} key={item.name}>
+        {item.name}
+      </CollectionFilterItem>
+    )
+  })
+
+  const productDataList = useMemo(() => {
+    let tempList: Product[] = allProductData;
+    if (router.query?.collection) {
+      const collection = router.query?.collection;
+      if (collection !== Collection.ALL) {
+        const target = flowerData.find(item => item.category === collection)
+        if (target) {
+          tempList = target.products
+        }
+      }
+    }
+    if (router.query?.price) {
+      const priceRange = router.query?.price as string
+      const [minPrice, maxPrice] = priceRange.split('-')
+      const priceFilter = tempList.filter(item => (
+        Number(item.price) >= Number(minPrice) && Number(item.price) <= Number(maxPrice)
+      ))
+      tempList = priceFilter;
+    }
+    return tempList;
+  }, [router.query])
 
   return (
     <>
@@ -150,24 +248,7 @@ const Flowers = () => {
                   </CollapseTitleDiv>
                   <Collapse in={!collapse.collection}>
                     <ListMargin />
-                    <CollectionFilterList>
-                      All
-                    </CollectionFilterList>
-                    <CollectionFilterList>
-                      The Floral Reef Signature
-                    </CollectionFilterList>
-                    <CollectionFilterList>
-                      Bouquets
-                    </CollectionFilterList>
-                    <CollectionFilterList>
-                      Vases
-                    </CollectionFilterList>
-                    <CollectionFilterList>
-                      Boxes
-                    </CollectionFilterList>
-                    <CollectionFilterList>
-                      Dried Flowers
-                    </CollectionFilterList>
+                    {collectionFilterList}
                   </Collapse>
                 </MenuDiv>
                 <MenuDiv>
@@ -178,7 +259,7 @@ const Flowers = () => {
                   <Collapse in={!collapse.price}>
                     <ListMargin />
                     <SliderContainer>
-                      <PrettoSlider
+                      <PriceSlider
                         value={priceRange}
                         onChange={handleRangeChange}
                         step={150}
@@ -196,12 +277,19 @@ const Flowers = () => {
                     </PriceDiv>
                   </Collapse>
                 </MenuDiv>
+                {
+                  Object.keys(router.query).length !== 0 && (
+                    <BorderLessMenu onClick={() => router.push('/flowers')}>
+                      Clear filters X
+                    </BorderLessMenu>
+                  )
+                }
               </MenuContainer>
             </Grid>
             <Grid item xs={9}>
               <FlowerCollection
                 category=''
-                products={allProductData}
+                products={productDataList}
                 pageSize={12}
                 gridSize={4}
               />

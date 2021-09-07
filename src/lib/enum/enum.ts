@@ -3,7 +3,8 @@ export enum Collection {
   BOUQUETS = 'Bouquets',
   VASES = 'Vases',
   BOXES = 'Boxes',
-  DRIED_FLOWERS = 'Dried Flowers'
+  DRIED_FLOWERS = 'Dried Flowers',
+  ALL = 'All',
 }
 
 export enum Size {

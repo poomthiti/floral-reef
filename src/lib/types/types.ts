@@ -1,6 +1,7 @@
 import {Collection, Size, Color, Status} from '@lib/enum'
 
 export interface Product {
+  id: string
   staticImage: string
   hoverImage: string  
   imageList: string[]
