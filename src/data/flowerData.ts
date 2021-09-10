@@ -122,7 +122,7 @@ export const flowerData: Data[] = [
         imageList: flowerImageList.SKU9,
         itemName: 'A single rose Signature Vintage Bouquet (White)',
         description: 'Small Size / White Palette Bouquet / Beige Wrap',
-        size: [Size.S],
+        size: [Size.S, Size.L],
         color: [Color.CREAM, Color.LIGHT_ORANGE],
         productInfo: ['ช่อขนาดเล็ก (S)', 'ประกอบด้วยดอกกุหลาบ1ดอก พร้อมดอกตบแต่ง', 'โทนดอกไม้สีครีม ส้ม', 'ห่อกระดาษโทนครีม เบจ'],
         status: '',

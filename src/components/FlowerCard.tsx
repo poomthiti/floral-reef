@@ -8,6 +8,7 @@ const CardContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   position: relative;
+  cursor: pointer;
 `
 const ImageDiv = styled.div`
   width: 220px;
@@ -50,6 +51,7 @@ interface CardProps {
   itemName: string
   status: 'Best Seller' | 'New in' | ''
   price: string
+  onCardClick: () => void;
 }
 
 export const FlowerCard: React.FC<CardProps> = ({
@@ -57,11 +59,12 @@ export const FlowerCard: React.FC<CardProps> = ({
   hoverImage,
   itemName,
   status,
-  price
+  price,
+  onCardClick
 }) => {
   const defaultPrice = Number(price) || 0
   return (
-    <CardContainer>
+    <CardContainer onClick={onCardClick}>
       <ImageDiv>
         <Image
           src={staticImage}

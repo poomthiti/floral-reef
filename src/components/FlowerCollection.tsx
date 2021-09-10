@@ -6,6 +6,7 @@ import { FlowerCard } from '@components';
 import { Product, Category } from '@lib/types'
 import Pagination from '@material-ui/lab/Pagination';
 import { GridSize } from '@material-ui/core';
+import { useRouter } from 'next/router';
 
 const CollectionTitle = styled(Typography)`
   color: ${palette.primary.light};
@@ -42,6 +43,7 @@ export const FlowerCollection: React.FC<Props> = ({
   pageSize,
   gridSize = 3
 }) => {
+  const router = useRouter();
   const [page, setPage] = useState<number>(1);
   const [productPaging, setProductPaging] = useState<Product[] | []>(products.slice(0, pageSize));
   const handleChange = (_: any, value: number) => {
@@ -61,8 +63,12 @@ export const FlowerCollection: React.FC<Props> = ({
             hoverImage,
             itemName,
             status,
-            price
+            price,
+            id
           } = item
+          const cardNavigation = () => router.push({
+            pathname: `/product/${id}`
+          })
           return (
             <Grid item md={gridSize} key={itemName}>
               <FlowerCard
@@ -71,6 +77,7 @@ export const FlowerCollection: React.FC<Props> = ({
                 itemName={itemName}
                 status={status}
                 price={price}
+                onCardClick={cardNavigation}
               />
             </Grid>
           )

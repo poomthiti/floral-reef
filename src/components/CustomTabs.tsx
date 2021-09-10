@@ -30,6 +30,9 @@ const CustomTab = styled(({ ...props }) => (<Tab {...props} classes={{ selected:
     opacity: 0.7
   }
 `
+const HiddenTab = styled(Tab)`
+  display: none;
+`
 
 const TabLabel = styled(Typography)`
   font-size: 14px;
@@ -37,7 +40,7 @@ const TabLabel = styled(Typography)`
   text-transform: capitalize;
 `
 
-const urlPathMap: {[key: number]: string} = {
+const urlPathMap: { [key: number]: string } = {
   0: '/',
   1: '/new-collection',
   2: '/flowers',
@@ -60,7 +63,9 @@ export const CustomTabs: React.FC = () => {
     } else if (path.startsWith('/contact')) {
       return 4
     }
+    return 9;
   }
+
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number): void => {
     router.push({
       pathname: urlPathMap[newValue]
@@ -95,6 +100,10 @@ export const CustomTabs: React.FC = () => {
         <CustomTab
           label={<TabLabel children="About Us" />}
           value={3}
+        />
+        <HiddenTab
+          label=''
+          value={9}
         />
         <CustomTab
           label={<TabLabel children="Contact" />}
