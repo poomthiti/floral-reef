@@ -43,8 +43,8 @@ const Title = styled(PrimaryTitle)`
   margin: 24px 0 8px;
   font-size: 40px;
 `
-const MoreBottomPadding = styled(ContentContainer)`
-  padding-bottom: 64px;
+const CollectionContent = styled(Content)`
+  margin-top: 24px;
 `
 const MenuContainer = styled.div`
   display: flex;
@@ -220,84 +220,80 @@ const Flowers = () => {
   }, [router.query])
 
   return (
-    <>
-      <ContentContainer bgColor={palette.white}>
-        <Title children="Flower Bouquet" />
-        <TextDiv>
-          ช่อดอกไม้ตามฤดูกาล ที่ทางร้านคัดสรรวัตถุดิบที่หลากหลาย ผสมพันธุ์ไม้ต่างๆไว้ด้วยกัน แต่ละช่วงพันธุ์และสีของดอกไม้อาจจะแตกต่างกัน โทนสีและชนิดในแต่ละช่วงเวลาที่สั่งอาจมีไม่ครบ ทางเราจะปรับเปลี่ยนให้เหมาะสมจากวัตถุดิบที่มี โดยที่โทนสีจะคงความใกล้เคียงเดิม อาจจะอ่อน/เข้ม หรือมีผสมเฉดอื่นบ้าง
-        </TextDiv>
-        <InquireContainer>
-          <InquireText>
-            สอบถามรายละเอียดเพิ่มเติมทาง
-          </InquireText>
-          <LineAccountButton />
-        </InquireContainer>
-      </ContentContainer>
-      <MoreBottomPadding bgColor={palette.white}>
-        <Content>
-          <Grid container spacing={4}>
-            <Grid item xs={3}>
-              <MenuContainer>
-                <FilterMenuDiv>
-                  Filter by
-                </FilterMenuDiv>
-                <MenuDiv>
-                  <CollapseTitleDiv onClick={() => setCollapse(prev => ({ ...prev, collection: !prev.collection }))}>
-                    Collection
-                    {collapse.collection ? <AddRoundedIcon fontSize="inherit" /> : <RemoveRoundedIcon fontSize="inherit" />}
-                  </CollapseTitleDiv>
-                  <Collapse in={!collapse.collection}>
-                    <ListMargin />
-                    {collectionFilterList}
-                  </Collapse>
-                </MenuDiv>
-                <MenuDiv>
-                  <CollapseTitleDiv onClick={() => setCollapse(prev => ({ ...prev, price: !prev.price }))}>
-                    Price
-                    {collapse.price ? <AddRoundedIcon fontSize="inherit" /> : <RemoveRoundedIcon fontSize="inherit" />}
-                  </CollapseTitleDiv>
-                  <Collapse in={!collapse.price}>
-                    <ListMargin />
-                    <SliderContainer>
-                      <PriceSlider
-                        value={priceRange}
-                        onChange={handleRangeChange}
-                        step={150}
-                        min={700}
-                        max={4200}
-                      />
-                    </SliderContainer>
-                    <PriceDiv>
-                      <div>
-                        {`฿${Number(priceRange[0])?.toFixed(2)}`}
-                      </div>
-                      <div>
-                        {`฿${Number(priceRange[1])?.toFixed(2)}`}
-                      </div>
-                    </PriceDiv>
-                  </Collapse>
-                </MenuDiv>
-                {
-                  Object.keys(router.query).length !== 0 && (
-                    <BorderLessMenu onClick={() => router.push('/flowers')}>
-                      Clear filters X
-                    </BorderLessMenu>
-                  )
-                }
-              </MenuContainer>
-            </Grid>
-            <Grid item xs={9}>
-              <FlowerCollection
-                category=''
-                products={productDataList}
-                pageSize={12}
-                gridSize={4}
-              />
-            </Grid>
+    <ContentContainer bgColor={palette.white}>
+      <Title children="Flower Bouquet" />
+      <TextDiv>
+        ช่อดอกไม้ตามฤดูกาล ที่ทางร้านคัดสรรวัตถุดิบที่หลากหลาย ผสมพันธุ์ไม้ต่างๆไว้ด้วยกัน แต่ละช่วงพันธุ์และสีของดอกไม้อาจจะแตกต่างกัน โทนสีและชนิดในแต่ละช่วงเวลาที่สั่งอาจมีไม่ครบ ทางเราจะปรับเปลี่ยนให้เหมาะสมจากวัตถุดิบที่มี โดยที่โทนสีจะคงความใกล้เคียงเดิม อาจจะอ่อน/เข้ม หรือมีผสมเฉดอื่นบ้าง
+      </TextDiv>
+      <InquireContainer>
+        <InquireText>
+          สอบถามรายละเอียดเพิ่มเติมทาง
+        </InquireText>
+        <LineAccountButton />
+      </InquireContainer>
+      <CollectionContent>
+        <Grid container spacing={4}>
+          <Grid item xs={3}>
+            <MenuContainer>
+              <FilterMenuDiv>
+                Filter by
+              </FilterMenuDiv>
+              <MenuDiv>
+                <CollapseTitleDiv onClick={() => setCollapse(prev => ({ ...prev, collection: !prev.collection }))}>
+                  Collection
+                  {collapse.collection ? <AddRoundedIcon fontSize="inherit" /> : <RemoveRoundedIcon fontSize="inherit" />}
+                </CollapseTitleDiv>
+                <Collapse in={!collapse.collection}>
+                  <ListMargin />
+                  {collectionFilterList}
+                </Collapse>
+              </MenuDiv>
+              <MenuDiv>
+                <CollapseTitleDiv onClick={() => setCollapse(prev => ({ ...prev, price: !prev.price }))}>
+                  Price
+                  {collapse.price ? <AddRoundedIcon fontSize="inherit" /> : <RemoveRoundedIcon fontSize="inherit" />}
+                </CollapseTitleDiv>
+                <Collapse in={!collapse.price}>
+                  <ListMargin />
+                  <SliderContainer>
+                    <PriceSlider
+                      value={priceRange}
+                      onChange={handleRangeChange}
+                      step={150}
+                      min={700}
+                      max={4200}
+                    />
+                  </SliderContainer>
+                  <PriceDiv>
+                    <div>
+                      {`฿${Number(priceRange[0])?.toFixed(2)}`}
+                    </div>
+                    <div>
+                      {`฿${Number(priceRange[1])?.toFixed(2)}`}
+                    </div>
+                  </PriceDiv>
+                </Collapse>
+              </MenuDiv>
+              {
+                Object.keys(router.query).length !== 0 && (
+                  <BorderLessMenu onClick={() => router.push('/flowers')}>
+                    Clear filters X
+                  </BorderLessMenu>
+                )
+              }
+            </MenuContainer>
           </Grid>
-        </Content>
-      </MoreBottomPadding>
-    </>
+          <Grid item xs={9}>
+            <FlowerCollection
+              category=''
+              products={productDataList}
+              pageSize={12}
+              gridSize={4}
+            />
+          </Grid>
+        </Grid>
+      </CollectionContent>
+    </ContentContainer>
   )
 }
 

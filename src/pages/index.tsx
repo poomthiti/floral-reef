@@ -114,7 +114,7 @@ const VerticalGroup = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 30px 0 24px;
+  margin-top: 30px;
 `
 const SocialSection = styled.div`
   margin-top: 24px;

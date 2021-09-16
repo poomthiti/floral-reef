@@ -8,3 +8,4 @@ export * from './TabContent';
 export * from './FlowerCollection';
 export * from './CustomText';
 export * from './SocialIcons';
+export * from './Gallery'

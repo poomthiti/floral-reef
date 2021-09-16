@@ -1,9 +1,9 @@
 import { flowerImageList } from './imageData'
 import { Collection, Size, Color, Status } from '@lib/enum'
-import { Product } from '@lib/types';
+import { Category, Product } from '@lib/types';
 
 interface Data {
-  category: Collection
+  category: Category
   products: Product[]
 }
 

@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import { Grid, Menu, MenuItem, Radio, RadioGroup } from '@material-ui/core'
 import { Color, Size } from '@lib/enum'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import { ProductGallery } from '@components'
 
 const Title = styled.div`
 	font-size: 22px;
@@ -148,118 +149,116 @@ const Product = () => {
 	};
 
 	return (
-		<>
-			<ContentContainer bgColor={palette.white}>
-				<h1>PENDING IMAGE GALLERY</h1>
-				<Content>
-					<Grid container spacing={8}>
-						<Grid item xs={8}>
-							<ContentDiv>
-								<Title>
-									{productData?.itemName}
-								</Title>
-								<Description>
-									{productData?.description}
-								</Description>
-								<BorderInfoContainer>
-									<InfoTitle>
-										PRODUCT INFO
-									</InfoTitle>
-									<BulletDiv>
-										{productData?.productInfo.map(item => (<div key={item}>-{item}</div>))}
-									</BulletDiv>
-								</BorderInfoContainer>
-								<InfoContainer>
-									<InfoTitle>
-										SHIPPING INFO
-									</InfoTitle>
-									<BulletDiv>
-										<div>-ค่าจัดส่งคิดตามระยะทาง โปรดเช็คกับทางร้านล่วงหน้า</div>
-										<div>-จัดส่งทั่วกรุงเทพและเขตที่บริการขนส่งให้บริการ</div>
-										<div>-บริการขนส่ง Lalamove/ Grab express bike/ Grab express car</div>
-									</BulletDiv>
-								</InfoContainer>
-								<span style={{ fontSize: '14px' }}>
-									*Delivery cost by distance*
-								</span>
-							</ContentDiv>
-						</Grid>
-						<Grid item xs={4}>
-							<ContentDiv>
-								<PriceTitle>
-									{`฿${Number(productData?.price).toFixed(2)}`}
-								</PriceTitle>
-								<SizeColorDiv>
-									<SizeColorTitle>
-										Color: {selectedColor}
-									</SizeColorTitle>
-									<CustomRadioGroup
-										aria-label="color"
-										name="colorGroup"
-										value={selectedColor}
-										onChange={handleColorChange}
-									>
-										{productData?.color.map(color => (
-											<CustomRadio
-												key={color}
-												selected={selectedColor === color}
-												value={color}
-												inputProps={{ 'aria-label': color }}
-												color="default"
-												disableRipple
-												icon={
-													<RadioBorder>
-														<RadioIcon buttoncolor={colorMap[color]} />
-													</RadioBorder>
-												}
-												checkedIcon={
-													<RadioBorder selected={selectedColor === color}>
-														<RadioIcon buttoncolor={colorMap[color]} />
-													</RadioBorder>
-												}
-											/>
-										))}
-									</CustomRadioGroup>
-								</SizeColorDiv>
-								<SizeColorDiv>
-									<SizeColorTitle>
-										Size
-									</SizeColorTitle>
-									<SelectComponent onClick={handleSelectClick}>
-										{selectedSize || <div></div>}
-										<ArrowDownIcon open={anchorEl} />
-									</SelectComponent>
-									<Menu
-										id="size-menu"
-										anchorEl={anchorEl}
-										keepMounted
-										open={Boolean(anchorEl)}
-										onClose={handleClose}
-										getContentAnchorEl={null}
-										anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-										transformOrigin={{ vertical: "top", horizontal: "left" }}
-										transitionDuration={0}
-										PaperProps={{
-											style: {
-												border: '1px solid rgba(192, 192, 192, 0.6)',
-												borderRadius: 4,
-												width: '282px',
-											}
-										}}
-									>
-										{productData?.size.map(size => (
-											<StyledMenuItem key={size} onClick={() => handleSizeChange(size)}>{size}</StyledMenuItem>
-										))}
-									</Menu>
-								</SizeColorDiv>
-								<LineButtonMargin />
-								<LineAccountButton theme="secondary" />
-							</ContentDiv>
-						</Grid>
+		<ContentContainer bgColor={palette.white}>
+			<Content>
+				<ProductGallery images={productData?.imageList} />
+				<Grid container spacing={8}>
+					<Grid item xs={8}>
+						<ContentDiv>
+							<Title>
+								{productData?.itemName}
+							</Title>
+							<Description>
+								{productData?.description}
+							</Description>
+							<BorderInfoContainer>
+								<InfoTitle>
+									PRODUCT INFO
+								</InfoTitle>
+								<BulletDiv>
+									{productData?.productInfo.map(item => (<div key={item}>-{item}</div>))}
+								</BulletDiv>
+							</BorderInfoContainer>
+							<InfoContainer>
+								<InfoTitle>
+									SHIPPING INFO
+								</InfoTitle>
+								<BulletDiv>
+									<div>-ค่าจัดส่งคิดตามระยะทาง โปรดเช็คกับทางร้านล่วงหน้า</div>
+									<div>-จัดส่งทั่วกรุงเทพและเขตที่บริการขนส่งให้บริการ</div>
+									<div>-บริการขนส่ง Lalamove/ Grab express bike/ Grab express car</div>
+								</BulletDiv>
+							</InfoContainer>
+							<span style={{ fontSize: '14px' }}>
+								*Delivery cost by distance*
+							</span>
+						</ContentDiv>
 					</Grid>
-				</Content>
-			</ContentContainer>
-		</>
+					<Grid item xs={4}>
+						<ContentDiv>
+							<PriceTitle>
+								{`฿${Number(productData?.price).toFixed(2)}`}
+							</PriceTitle>
+							<SizeColorDiv>
+								<SizeColorTitle>
+									Color: {selectedColor}
+								</SizeColorTitle>
+								<CustomRadioGroup
+									aria-label="color"
+									name="colorGroup"
+									value={selectedColor}
+									onChange={handleColorChange}
+								>
+									{productData?.color.map(color => (
+										<CustomRadio
+											key={color}
+											selected={selectedColor === color}
+											value={color}
+											inputProps={{ 'aria-label': color }}
+											color="default"
+											disableRipple
+											icon={
+												<RadioBorder>
+													<RadioIcon buttoncolor={colorMap[color]} />
+												</RadioBorder>
+											}
+											checkedIcon={
+												<RadioBorder selected={selectedColor === color}>
+													<RadioIcon buttoncolor={colorMap[color]} />
+												</RadioBorder>
+											}
+										/>
+									))}
+								</CustomRadioGroup>
+							</SizeColorDiv>
+							<SizeColorDiv>
+								<SizeColorTitle>
+									Size
+								</SizeColorTitle>
+								<SelectComponent onClick={handleSelectClick}>
+									{selectedSize || <div></div>}
+									<ArrowDownIcon open={anchorEl} />
+								</SelectComponent>
+								<Menu
+									id="size-menu"
+									anchorEl={anchorEl}
+									keepMounted
+									open={Boolean(anchorEl)}
+									onClose={handleClose}
+									getContentAnchorEl={null}
+									anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+									transformOrigin={{ vertical: "top", horizontal: "left" }}
+									transitionDuration={0}
+									PaperProps={{
+										style: {
+											border: '1px solid rgba(192, 192, 192, 0.6)',
+											borderRadius: 4,
+											width: '282px',
+										}
+									}}
+								>
+									{productData?.size.map(size => (
+										<StyledMenuItem key={size} onClick={() => handleSizeChange(size)}>{size}</StyledMenuItem>
+									))}
+								</Menu>
+							</SizeColorDiv>
+							<LineButtonMargin />
+							<LineAccountButton theme="secondary" />
+						</ContentDiv>
+					</Grid>
+				</Grid>
+			</Content>
+		</ContentContainer>
 	)
 }
 

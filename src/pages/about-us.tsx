@@ -10,6 +10,10 @@ import {
 import { palette } from '@theme';
 import { PrimaryTitle, PrimarySubtitle } from '../components/CustomText'
 
+const LessPaddingContainer = styled(ContentContainer)`
+  padding-bottom: 24px;
+`
+
 const Title = styled(PrimaryTitle)`
   margin-top: 32px;
   font-size: 36px;
@@ -52,7 +56,7 @@ const SwiperContainer = styled.div`
 const AboutUs = () => {
   return (
     <>
-      <ContentContainer bgColor={palette.secondary.light}>
+      <LessPaddingContainer bgColor={palette.secondary.light}>
         <ContentDiv>
           <Title>
             About us
@@ -80,7 +84,7 @@ const AboutUs = () => {
         <SocialSection>
           <SocialIcons />
         </SocialSection>
-      </ContentContainer>
+      </LessPaddingContainer>
       <SwiperContainer>
         <AboutPageSwiper />
       </SwiperContainer>
