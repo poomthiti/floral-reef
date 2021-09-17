@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled';
 import { palette } from '@theme'
 import { AnimatePresence, motion } from 'framer-motion';
@@ -10,6 +10,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 `
+
 const ThumbnailContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -58,6 +59,13 @@ interface GalleryProps {
 
 export const ProductGallery = ({ images = [] }: GalleryProps) => {
   const [selectedImage, setSelectedImage] = useState(images[0])
+
+  useEffect(() => {
+    if (images) {
+      setSelectedImage(images[0])
+    }
+  }, [images])
+  
   return (
     <Container>
       <AnimatePresence initial={false}>

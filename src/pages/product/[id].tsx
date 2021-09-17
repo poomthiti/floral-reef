@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import {
 	ContentContainer,
@@ -8,10 +8,21 @@ import {
 import { palette } from '@theme'
 import { allProductData } from '@data'
 import { useRouter } from 'next/router'
-import { Grid, Menu, MenuItem, Radio, RadioGroup } from '@material-ui/core'
+import { Breadcrumbs, Grid, Link, Menu, MenuItem, Radio, RadioGroup, Typography } from '@material-ui/core'
 import { Color, Size } from '@lib/enum'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { ProductGallery } from '@components'
+import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
+import ChevronLeftRoundedIcon from '@material-ui/icons/ChevronLeftRounded';
+
+const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+	flex-direction: row;
+	width: 100%;
+	margin-top: 80px;	
+`
 
 const Title = styled.div`
 	font-size: 22px;
@@ -105,6 +116,40 @@ const ArrowDownIcon = styled(KeyboardArrowDownIcon) <{ open?: any }>`
 const StyledMenuItem = styled(MenuItem)`
 	font-size: 18px;
 `
+const StyledLink = styled(Link)`
+	color: black;
+	font-size: 16px;
+	:hover {
+		cursor: pointer;
+	}
+`
+const NavigatorContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+`
+const NavigatorGroup = styled.div <{ disabled?: boolean } > `
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	${({ disabled }) => disabled && `
+		color: rgba(0,0,0,0.54);
+		cursor: default;
+	`}
+`
+const VerticalBar = styled.div`
+	height: 16px;
+	width: 1px;
+	background-color: black;
+	margin: 0 12px;
+	font-weight: 400px;
+`
+const LeftArrow = styled(ChevronLeftRoundedIcon)`
+	font-size: 28px;
+`
+const RightArrow = styled(ChevronRightRoundedIcon)`
+	font-size: 28px;
+`
 
 const colorMap = {
 	'Orange': '#E36600',
@@ -124,6 +169,14 @@ const colorMap = {
 	'Yellow': '#FFD200'
 }
 
+const pathMap: { [key: string]: string } = {
+	'/': 'Home',
+	'/new-collection': 'New Collection',
+	'/flowers': 'Flowers',
+	'/about-us': 'About Us',
+	'/contact': 'Contact',
+}
+
 const Product = () => {
 	const router = useRouter()
 	const { id } = router.query
@@ -131,6 +184,8 @@ const Product = () => {
 	const [selectedColor, setSelectedColor] = useState<Color | undefined>(productData?.color[0])
 	const [selectedSize, setSelectedSize] = useState<Size | undefined>(productData?.size[0])
 	const [anchorEl, setAnchorEl] = React.useState(null)
+
+	const prevPage = typeof window !== 'undefined' ? window?.sessionStorage.getItem('prevPath') as string : '/'
 
 	const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSelectedColor(event.target.value as Color)
@@ -148,10 +203,64 @@ const Product = () => {
 		setAnchorEl(null);
 	};
 
+	const productNavigation = (direction: 'forward' | 'backward') => {
+		let targetId;
+		if (direction === 'forward') {
+			targetId = String(Number(id) + 1)
+		} else[
+			targetId = String(Number(id) - 1)
+		]
+		router.push({
+			pathname: `/product/${targetId}`
+		})
+	}
+
 	return (
 		<ContentContainer bgColor={palette.white}>
 			<Content>
-				<ProductGallery images={productData?.imageList} />
+				<HeaderContainer>
+					<Breadcrumbs>
+						<StyledLink onClick={() => router.push('/')} underline="none">
+							Home
+						</StyledLink>
+						{(!prevPage?.startsWith('/product') && prevPage !== '/') && (
+							<StyledLink onClick={() => router.push(prevPage)} underline="none">
+								{pathMap[prevPage]}
+							</StyledLink>
+						)}
+						<Typography>
+							{productData?.itemName}
+						</Typography>
+					</Breadcrumbs>
+					<NavigatorContainer>
+						<NavigatorGroup
+							onClick={() => {
+								if (Number(id) - 1 <= 0) return;
+								productNavigation('backward')
+							}}
+							disabled={Number(id) - 1 <= 0}
+						>
+							<LeftArrow />
+							<Typography>
+								Prev
+							</Typography>
+						</NavigatorGroup>
+						<VerticalBar />
+						<NavigatorGroup
+							onClick={() => {
+								if (Number(id) + 1 > allProductData.length) return;
+								productNavigation('forward')
+							}}
+							disabled={Number(id) + 1 > allProductData.length}
+						>
+							<Typography>
+								Next
+							</Typography>
+							<RightArrow />
+						</NavigatorGroup>
+					</NavigatorContainer>
+				</HeaderContainer>
+				<ProductGallery images={productData?.imageList ?? []} />
 				<Grid container spacing={8}>
 					<Grid item xs={8}>
 						<ContentDiv>

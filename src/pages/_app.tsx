@@ -7,10 +7,16 @@ import {
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react'
 import theme from 'src/theme'
 import { MainContainer, LogoBanner, CustomTabs } from '@components'
-import { AnimatePresence, motion } from 'framer-motion'
-import { fadeInOutEffect } from '@lib/utils/animation'
+import { useEffect } from 'react'
 
 function MyApp({ Component, pageProps, router }: AppProps) {
+  const storePath = () => {
+    if (typeof window !== "undefined") {
+      window.sessionStorage.setItem('prevPath', window.location.pathname)
+    }
+  }
+  useEffect(() => storePath, [router.asPath])
+
   return (
     <StylesProvider injectFirst>
       <MUIThemeProvider theme={theme}>

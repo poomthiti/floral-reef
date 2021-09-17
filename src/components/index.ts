@@ -4,7 +4,6 @@ export * from './FlowerCard';
 export * from './Button';
 export * from './ImageSwiper';
 export * from './Layout';
-export * from './TabContent';
 export * from './FlowerCollection';
 export * from './CustomText';
 export * from './SocialIcons';
