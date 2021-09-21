@@ -16,7 +16,7 @@
       ],
       "@data": [
         "src/data"
-      ],
+      ]
     },
     "target": "es5",
     "lib": [

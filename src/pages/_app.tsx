@@ -8,6 +8,7 @@ import { ThemeProvider as EmotionThemeProvider } from '@emotion/react'
 import theme from 'src/theme'
 import { MainContainer, LogoBanner, CustomTabs } from '@components'
 import { useEffect } from 'react'
+import '@lib/utils/marker.css'
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   const storePath = () => {
