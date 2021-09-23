@@ -7,4 +7,5 @@ export * from './Layout';
 export * from './FlowerCollection';
 export * from './CustomText';
 export * from './SocialIcons';
-export * from './Gallery'
+export * from './Gallery';
+export * from './Modal';

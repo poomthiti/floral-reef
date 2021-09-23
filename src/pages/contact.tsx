@@ -8,7 +8,7 @@ import {
 } from '@components'
 import { palette } from '@theme';
 import { Button, FormControl, Grid, TextField, Typography } from '@material-ui/core';
-import GoogleMapReact from 'google-map-react';
+import GoogleMapReact, { Maps } from 'google-map-react';
 import { PrimaryTitle } from '../components/CustomText'
 
 const LessPaddingContainer = styled(ContentContainer)`
@@ -64,8 +64,11 @@ const InfoSubDiv = styled.div`
   :last-child {
     margin-left: 40px;
   }
-`
-const InfoTitle = styled(Typography)`
+  `
+const ThemeText = styled(Typography)`
+  color: #351406;
+  `
+const InfoTitle = styled(ThemeText)`
   margin-bottom: 4px;
 `
 const MapDiv = styled.div`
@@ -85,6 +88,19 @@ const Marker = (props: any) => {
     <div className="pin"></div>
     <div className="pulse"></div>
   </>
+}
+const getMapOptions = (maps: Maps) => {
+  return {
+    mapTypeControl: true,
+    mapTypeControlOptions: {
+      style: maps.MapTypeControlStyle.HORIZONTAL_BAR,
+      position: maps.ControlPosition.TOP_LEFT,
+      mapTypeIds: [
+        maps.MapTypeId.ROADMAP,
+        maps.MapTypeId.SATELLITE
+      ]
+    },
+  }
 }
 
 const Contact = () => {
@@ -144,21 +160,22 @@ const Contact = () => {
             </SocialSection>
           </InfoSubDiv>
         </InformationDiv>
-        <Typography>
+        <ThemeText>
           Please feel free to contact us for an information and additional request.
-        </Typography>
+        </ThemeText>
       </LessPaddingContainer>
       <MapDiv>
         <MapContainer>
           <GoogleMapReact
-            bootstrapURLKeys={{ key: 'AIzaSyBLmx0LhboV8XPeL_0T36_0lmouedLvXkQ' }}
+            bootstrapURLKeys={{ key: 'AIzaSyDLwirwEnlaXfLvFzfrRGKF2QBqlXhRO3s' }}
             defaultCenter={{
-              lat: 13.743894195656656,
-              lng: 100.50232350185388,
+              lat: 13.741244999013148,
+              lng: 100.50216884468743,
             }}
-            defaultZoom={11}
+            defaultZoom={14}
+            options={getMapOptions}
           >
-            <Marker lat={13.743894195656656} lng={100.50232350185388} />
+            <Marker lat={13.741244999013148} lng={100.50216884468743} />
           </GoogleMapReact>
         </MapContainer>
       </MapDiv>
