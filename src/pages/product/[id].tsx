@@ -44,6 +44,8 @@ const InfoContainer = styled(ContentDiv)`
 `
 const BorderInfoContainer = styled(InfoContainer)`
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	margin-top: 48px;
+	width: 90%;
 `
 const InfoTitle = styled.div`
 	font-size: 18px;
@@ -65,7 +67,7 @@ const CustomRadioGroup = styled(RadioGroup)`
 	flex-direction: row;
 `
 const LineButtonMargin = styled.div`
-	margin-top: 20px;
+	margin-top: 24px;
 `
 const CustomRadio = styled(Radio) <{ selected?: boolean }>`
 	padding: 0px;
@@ -183,7 +185,7 @@ const Product = () => {
 	const productData = allProductData.find(el => el.id === id)
 	const [selectedColor, setSelectedColor] = useState<Color | undefined>(productData?.color[0])
 	const [selectedSize, setSelectedSize] = useState<Size | undefined>(productData?.size[0])
-	const [anchorEl, setAnchorEl] = React.useState(null)
+	const [anchorEl, setAnchorEl] = useState(null)
 
 	const prevPage = typeof window !== 'undefined' ? window?.sessionStorage.getItem('prevPath') as string : '/'
 
@@ -261,7 +263,7 @@ const Product = () => {
 					</NavigatorContainer>
 				</HeaderContainer>
 				<ProductGallery images={productData?.imageList ?? []} />
-				<Grid container spacing={8}>
+				<Grid container spacing={3}>
 					<Grid item xs={8}>
 						<ContentDiv>
 							<Title>
@@ -300,6 +302,37 @@ const Product = () => {
 							</PriceTitle>
 							<SizeColorDiv>
 								<SizeColorTitle>
+									Size
+								</SizeColorTitle>
+								<SelectComponent onClick={handleSelectClick}>
+									{selectedSize || <div></div>}
+									<ArrowDownIcon open={anchorEl} />
+								</SelectComponent>
+								<Menu
+									id="size-menu"
+									anchorEl={anchorEl}
+									keepMounted
+									open={Boolean(anchorEl)}
+									onClose={handleClose}
+									getContentAnchorEl={null}
+									anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+									transformOrigin={{ vertical: "top", horizontal: "left" }}
+									transitionDuration={0}
+									PaperProps={{
+										style: {
+											border: '1px solid rgba(192, 192, 192, 0.6)',
+											borderRadius: 4,
+											width: '282px',
+										}
+									}}
+								>
+									{productData?.size.map(size => (
+										<StyledMenuItem key={size} onClick={() => handleSizeChange(size)}>{size}</StyledMenuItem>
+									))}
+								</Menu>
+							</SizeColorDiv>
+							<SizeColorDiv>
+								<SizeColorTitle>
 									Color: {selectedColor}
 								</SizeColorTitle>
 								<CustomRadioGroup
@@ -329,37 +362,6 @@ const Product = () => {
 										/>
 									))}
 								</CustomRadioGroup>
-							</SizeColorDiv>
-							<SizeColorDiv>
-								<SizeColorTitle>
-									Size
-								</SizeColorTitle>
-								<SelectComponent onClick={handleSelectClick}>
-									{selectedSize || <div></div>}
-									<ArrowDownIcon open={anchorEl} />
-								</SelectComponent>
-								<Menu
-									id="size-menu"
-									anchorEl={anchorEl}
-									keepMounted
-									open={Boolean(anchorEl)}
-									onClose={handleClose}
-									getContentAnchorEl={null}
-									anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-									transformOrigin={{ vertical: "top", horizontal: "left" }}
-									transitionDuration={0}
-									PaperProps={{
-										style: {
-											border: '1px solid rgba(192, 192, 192, 0.6)',
-											borderRadius: 4,
-											width: '282px',
-										}
-									}}
-								>
-									{productData?.size.map(size => (
-										<StyledMenuItem key={size} onClick={() => handleSizeChange(size)}>{size}</StyledMenuItem>
-									))}
-								</Menu>
 							</SizeColorDiv>
 							<LineButtonMargin />
 							<LineAccountButton theme="secondary" />

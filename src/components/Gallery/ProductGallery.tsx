@@ -15,7 +15,7 @@ const ThumbnailContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: fit-content;
-  margin-top: 16px;;
+  margin-top: calc(59vh + 18px);
 `
 const Thumbnail = styled.div<{ selected?: boolean }>`
   height: 48px;
@@ -37,22 +37,9 @@ const CurrentImage = styled(motion.img)`
   height: 59vh;
   width: auto;
   display: block;
-  position: relative;
+  position: absolute;
 `
-const variants = {
-  show: {
-    opacity: 1,
-    transition: {
-      duration: 0.4
-    },
-  },
-  hidden: {
-    opacity: 0,
-    transition: {
-      duration: 0.4,
-    },
-  },
-}
+
 interface GalleryProps {
   images: string[]
 }
@@ -65,18 +52,17 @@ export const ProductGallery = ({ images = [] }: GalleryProps) => {
       setSelectedImage(images[0])
     }
   }, [images])
-  
+
   return (
     <Container>
       <AnimatePresence initial={false}>
         <CurrentImage
           key={selectedImage}
           src={selectedImage}
-          initial="hidden"
-          animate="show"
-          exit="hidden"
-          variants={variants}
-          transition={{ ease: 'easeInOut' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, zIndex: 1 }}
+          exit={{ opacity: 0, zIndex: 0 }}
+          transition={{ opacity: { duration: 0.4 } }}
         />
       </AnimatePresence>
       <ThumbnailContainer>
