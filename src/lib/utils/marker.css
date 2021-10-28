@@ -1,3 +1,40 @@
+.infoWindow {
+  position: relative;
+  bottom: 87px;
+  left: -111px;
+  width: 212px;
+  background-color: white;
+  box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.3);
+  font-size: 12px;
+  z-index: 100;
+  padding: 12px;
+  border-radius: 8px;
+}
+.infoWindow ::after{
+  background: linear-gradient(45deg,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 51%,rgba(255,255,255,0) 100%);
+  box-shadow: -2px 2px 2px 0 rgba(178,178,178,.4);
+  content: "";
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.infoText {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.direction {
+  color: #551A8B;
+  text-transform: capitalize;
+  text-decoration: underline;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.direction :hover {
+  cursor: pointer;
+}
 .pin {
   width: 30px;
   height: 30px;

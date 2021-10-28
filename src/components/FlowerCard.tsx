@@ -10,16 +10,26 @@ const CardContainer = styled.div`
   position: relative;
   cursor: pointer;
 `
-const ImageDiv = styled.div`
+const ImageDiv = styled.div<{ imgsrc?: string, imghover?: string }>`
   width: 220px;
   height: 220px;
-`
+  background-image: url(${({ imgsrc }) => imgsrc});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  :hover {
+    background-image: url(${({ imghover }) => imghover});
+  }
+
+  ::after{
+   position: absolute; 
+   width: 0; 
+   height: 0; 
+   overflow: hidden; 
+   z-index: -1;
+   content: url(${({ imghover }) => imghover});
+  }
 `
 
 const StatusBox = styled.div`
@@ -65,13 +75,7 @@ export const FlowerCard: React.FC<CardProps> = ({
   const defaultPrice = Number(price) || 0
   return (
     <CardContainer onClick={onCardClick}>
-      <ImageDiv>
-        <Image
-          src={staticImage}
-          onMouseOver={(e) => e.currentTarget.src = hoverImage}
-          onMouseOut={(e) => e.currentTarget.src = staticImage}
-          alt={itemName}
-        />
+      <ImageDiv imgsrc={staticImage} imghover={hoverImage}>
         {status && (
           <StatusBox>
             <StatusText children={status} />

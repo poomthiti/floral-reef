@@ -10,6 +10,7 @@ import { palette } from '@theme';
 import { Button, FormControl, Grid, TextField, Typography } from '@material-ui/core';
 import GoogleMapReact, { Maps } from 'google-map-react';
 import { PrimaryTitle } from '../components/CustomText'
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 
 const LessPaddingContainer = styled(ContentContainer)`
   padding-bottom: 56px;
@@ -23,6 +24,9 @@ const StyledFormControl = styled(FormControl)`
 `
 const HalfInput = styled(TextField)`
   width: 100%;
+`
+const CustomTextField = styled(TextField)`
+  margin-top: 8px;
 `
 const StyledButton = styled(Button)`
   width: 600px;
@@ -55,7 +59,7 @@ const InformationDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 64px 0 16px 0;
+  margin: 64px 0 24px 0;
 `
 const InfoSubDiv = styled.div`
   display: flex;
@@ -83,12 +87,19 @@ const MapContainer = styled.div`
   width: 980px;
   height: inherit;
 `
-const Marker = (props: any) => {
-  return <>
-    <div className="pin"></div>
-    <div className="pulse"></div>
-  </>
-}
+const CloseIcon = styled(CloseRoundedIcon)`
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #6e6e6e;
+
+  :hover {
+    color: black;
+  }
+`
+
 const getMapOptions = (maps: Maps) => {
   return {
     mapTypeControl: true,
@@ -104,6 +115,32 @@ const getMapOptions = (maps: Maps) => {
 }
 
 const Contact = () => {
+  const [showInfo, setShowInfo] = React.useState<boolean>(true);
+
+  const Marker = (props: any) => {
+    return (
+      <>
+        {showInfo && (
+          <div className="infoWindow">
+            <div className="infoText">
+              Chakkawat, Bangkok, Thailand
+            </div>
+            <CloseIcon onClick={() => setShowInfo(false)} />
+            <a
+              className="direction"
+              href="https://www.google.com/maps/dir/?api=1&destination=Chakkawat,%20Bangkok,%20Thailand"
+              target="_blank"
+            >
+              Directions
+            </a>
+          </div>
+        )}
+        <div className="pin"></div>
+        <div className="pulse"></div>
+      </>
+    )
+  }
+
   return (
     <>
       <LessPaddingContainer bgColor={palette.secondary.light}>
@@ -128,12 +165,12 @@ const Contact = () => {
                 />
               </Grid>
             </Grid >
-            <TextField
+            <CustomTextField
               id="subject-input"
               label="Subject"
               variant="standard"
             />
-            <TextField
+            <CustomTextField
               id="message-input"
               label="Type your message here..."
               multiline
@@ -175,7 +212,10 @@ const Contact = () => {
             defaultZoom={14}
             options={getMapOptions}
           >
-            <Marker lat={13.741244999013148} lng={100.50216884468743} />
+            <Marker
+              lat={13.741244999013148}
+              lng={100.50216884468743}
+            />
           </GoogleMapReact>
         </MapContainer>
       </MapDiv>
